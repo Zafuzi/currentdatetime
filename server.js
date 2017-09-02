@@ -1,4 +1,4 @@
-// content of index.js
+// content of server.js
 const http = require('http')
 const port = 8000
 
