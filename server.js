@@ -4,7 +4,7 @@ const port = 12345
 
 const requestHandler = (request, response) => {
     console.log(request.url)
-    let date = new Date()
+    var date = new Date()
     response.end('Current date and time: ' + date)
 }
 
@@ -14,6 +14,5 @@ server.listen(port, (err) => {
     if (err) {
         return console.log('something bad happened', err)
     }
-
     console.log(`server is listening on ${port}`)
 })
