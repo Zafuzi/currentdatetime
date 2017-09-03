@@ -1,0 +1,14 @@
+
+// Create DB
+CREATE DATABASE `foobar` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+// Create Table
+CREATE TABLE `lookups` (
+  `key` varchar(45) NOT NULL,
+  `value` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`key`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+// Create Data
+INSERT INTO `foobar`.`lookups` (`key`, `value`) VALUES ('hello', 'world');
