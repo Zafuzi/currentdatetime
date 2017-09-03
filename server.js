@@ -35,6 +35,24 @@ app.get('/', function (req, res) {
         }
     });
 });
+// Get a single query
+app.get('/get/:key', function (request, response) {
+    var q = 'SELECT value FROM foobar.lookups WHERE lookups.key="' + request.params.key + '"';
+    conn.query(q, function (error, results) {
+        if (error) {
+            response
+                .status(400)
+                .send('Error in database operation');
+            console.log(request.params.key, q)
+        } else {
+            if (results.length > 0) {
+                response.send('value=' + results[0].value);
+            } else {
+                response.send('Value for key "' + request.params.key + '" not found.')
+            }
+        }
+    });
+});
 // Create a new entry
 app.get('/add/:key/:value', function (req, res) {
     var data = {
