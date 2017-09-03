@@ -1,0 +1,31 @@
+html
+  head
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title= title
+    link(rel="stylesheet" href="static/styles.css")
+  body
+    //- Main Message
+    h1= message
+    //- Add new items to the database
+    h4 Add a new key value pair
+    form(method="post" action="/add")#add_form
+        input(type="text" placeholder="key" name="key" require).editable_input
+        input(type="text" placeholder="value" name="value" require).editable_input
+        input(type="submit" value="ADD")#add
+    hr
+    //- Display existing pairs
+    h4 Existing Pairs
+    #table
+        each result in table
+            .row
+                .editable
+                    label Key: 
+                        input(type="text" name="key" value=result.key disabled).editable_input.key
+                    label Value:
+                        input(type="text" name="value" value=result.value require).editable_input
+                input(type="submit" value="UPDATE").update
+                input(type="submit" value="DELETE").delete
+
+    script(src="https://code.jquery.com/jquery-3.2.1.min.js")
+    script(src="static/scripts/main.js")
+    
